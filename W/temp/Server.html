@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EnACP</title>
+    <link rel ="stylesheet"  href="/static/css/commons.css">
+    <script src="/static/js/custom.js"></script>
+</head>
+<body class = 'bp main'>
+    <div id = "container">
+        <div id = "Top">
+            <div id = "logo">
+                <a href="/Server/">
+                    <img src ='/static/EnAcp_logo.png'>
+                </a>
+            </div>
+            <div id ="menu">
+                <h4>
+                    <ul>
+                        <li> <a href="/Server/"> New Job </a> </li>
+                        <li> <a href="/Server/"> Docs </a> </li>
+                        <li> <a href="/Server/"> About</a> </li>
+                        <li> <a href="/classServer/"> Download </a> </li>
+                        <li> <a href="/Server/"> Job Status </a> </li>
+                        <li id = 'last'> <a href="/Server/"> Group </a> </li>
+                    </ul>
+                </h4>
+            </div>
+        </div>
+        <div id ="mainbody">
+            <div id ="content">
+                <style type="text/css">
+                    #myAutoComplete{
+                        width:50em;
+                        padding-bottom: 2em;
+                    }
+                    .yui-skin-sam .yui-ac-content{
+                        max-height:18em;
+                        overflow:auto;
+                        overflow-x:hidden; /* set scrolling */
+                         _height:18em;
+                    }
+                </style>
+                <script type="text/javascript" src="/static/js/jquery-1.4.2.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        var defaultSeq = ">Positive_1\nKWKLFKKIEKVGQNIRDGIIKAGPAVAVVGQATQIAK";
+                        $("#seqExample").click(function(event)
+        {
+            $("#id_sequences").val(defaultSeq)
+
+            $("#id_sequences").css({"color":"black"});
+            event.preventDefault();
+        });
+            $("#seqInput").click(function(event)
+	    {
+	        });
+                    })
+                </script>
+                <h2>
+                    <b>Protein Structure Property Prediction</b>
+                </h2>
+                <h4>
+                    <p>
+                        <b>
+                            <u>RaptorX Property</u>
+                        </b>
+                        is a web server predicting structure property of a protein sequence without using any template information. It outperforms other servers especially for proteins
+                        without close homologs in the Protein Data Bank (PDB) or with very sparse sequence profile.
+                        This server employs an emerging machine learning model called DeepCNF (Deep Convolutional Neural Fields) to predict
+                        <b>secondary structure (SS), solvent accessibility (ACC), and disorder regions (DISO)</b> simultaneously. DeepCNF not only models complex sequence-structure relationship by a deep hierarchical architecture, but also interdependency between adjacent property labels. Our experimental results show that this server can obtain ~84% Q3 accuracy for 3-state SS, ~72% Q8 accuracy for 8-state SS, ~66% Q3 accuracy for 3-state solvent accessibility, and ~0.89 Area Under the ROC Curve (AUC) for disorder prediction. RaptorX-Property was
+                        <font color="red">ranked 1st in 3-/8-state secondary structure prediction </font> in a third-party evaluation work <a href="https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbw129", target="_blank">published in Briefings in Bioinformatics.</a> Software is available <a href="https://github.com/realbigws/RaptorX_Property_Fast", target="_blank">here.</a>
+                    </p>
+                </h4>
+                <div id ="resultpanel" class = "yui-skin-sam">
+                    <div id ="demo" class ="yui-navset">
+                    <div class ="yui-content">
+                        <div>
+                            <br>
+                            <form method="POST" enctype="multipart/form-data" >
+                                <div id ="formgroup">
+                                <div id ="title">
+                                    Sequences for Prediction &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a id="seqExample" href="#">(example)</a>
+                                </div>
+                                    <label for="id_sequences">Sequences</label>:<br>
+                                    <textarea id="id_sequences" rows="10" cols="40" name="sequences"></textarea>
+                                    <br>
+                                    <label for="id_fileSeq">Sequence file</label>:
+                                    <input type="file" name="fileSeq" id="id_fileSeq" onchange="handleFile(this)" />
+                                </div>
+                                <br>
+                                <input class="myButton" type="submit" name="predict_sub" value="Submit" onclick="delayURL(Result.html)"/>
+                                        #return timedCount()
+                                <input type="reset" class="'myButton" value="Reset "/>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+                <div id ="txtt" align="center" style="visibility: hidden; margin-top: 0">
+                <!--p> jobs are processing ahead of you.</p-->
+                 <p align="center" style="margin-bottom: 0px">Please wait.........</p>
+                    <input align="center" type="text" id="time" style="margin-top: 0px; border:0; font-size:large; width:40px;">
+                     </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
